@@ -9,6 +9,9 @@ class Cliente(models.Model):
     cedula =models.CharField(max_length=200)
     telefono =models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.Nombre
+
 class Pedido(models.Model):
     codigo_pedido = models.CharField(max_length=200)
     codigo_producto = models.CharField(max_length=200)
@@ -36,12 +39,15 @@ class producto(models.Model):
 
 
 class reserva(models.Model):
-    id_reserva = models.CharField(max_length=200)
-    numero_mesa = models.IntegerField()
-    tipo_reserva = models.CharField(max_length=200)
-    nombre_cliente = models.CharField(max_length=200)
-    fecha = models.CharField(max_length=200)
-    hora = models.CharField(max_length=200)
+    email = models.EmailField(verbose_name='email address', unique=True, max_length=244, null=True)
+    nombre_cliente = models.CharField(max_length=200, null=True)
+    fecha = models.CharField(max_length=200, null=True)
+    telefono = models.CharField(max_length=200, null=True)
+    numero_personas = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        self.email
+
 
 class mesa(models.Model):
     numero_mesa = models.IntegerField()
